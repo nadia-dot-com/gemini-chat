@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <div className="pt-10 flex flex-col justify-center items-center w-[80dvh]">
+    <div className="pt-10 flex flex-col justify-center items-center w-full max-w-3xl px-4">
       <ChatMessages chatHistory={chatHistory} />
       <div className="p-4 mb-4 h-2 justify-start w-full">
         {loading && <LoadingSpinner />}
