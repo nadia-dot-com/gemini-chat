@@ -38,10 +38,17 @@ export function useChatLogic() {
       ]);
     } catch (error) {
       console.error(error);
+
+      const message =
+        error instanceof Error &&
+        error.message === INFORMATIVE_MESSAGES.expiredLimit
+          ? INFORMATIVE_MESSAGES.expiredLimit
+          : INFORMATIVE_MESSAGES.uiError;
+
       setChatHistory((prev) => [
         ...prev,
         {
-          message: INFORMATIVE_MESSAGES.uiError,
+          message,
           type: "system",
         },
       ]);
