@@ -40,7 +40,7 @@ export default function Home() {
 
         <button
           onClick={sendMessage}
-          className="bg-[#0f0f12] p-2 absolute z-10 top-5 right-3 rounded-full"
+          className="bg-[#0f0f12] p-2 absolute z-10 top-5 right-3 rounded-full cursor-pointer"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
