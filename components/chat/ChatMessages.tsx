@@ -1,5 +1,7 @@
-import { ChatMessage } from "@/features/chat/types";
+import { ChatMessage } from "@/features/chat/types/types";
 import { ChatMessageItem } from "./ChatMessageItem";
+import { DEFAULT_MESSAGE } from "@/features/chat/data/messages";
+import { v4 as uuidv4 } from "uuid";
 
 export function ChatMessages({ chatHistory }: { chatHistory: ChatMessage[] }) {
   return (
@@ -7,13 +9,11 @@ export function ChatMessages({ chatHistory }: { chatHistory: ChatMessage[] }) {
       {chatHistory.length > 0 ? (
         <div className="flex flex-col gap-3">
           {chatHistory.map((msg) => (
-            <ChatMessageItem msg={msg} />
+            <ChatMessageItem key={uuidv4()} msg={msg} />
           ))}
         </div>
       ) : (
-        <div className="text-2xl text-center pt-80">
-          How can I help you today?
-        </div>
+        <div className="text-2xl text-center pt-80">{DEFAULT_MESSAGE}</div>
       )}
     </div>
   );

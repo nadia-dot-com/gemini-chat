@@ -1,57 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { LoadingSpinner } from "@/components/ui/LoadingSpinner";
 import { ChatMessages } from "@/components/chat/ChatMessages";
-import { ChatMessage } from "@/features/chat/types";
+import { useChatLogic } from "@/features/chat/hooks/useChatLogic";
 
 export default function Home() {
-  const [inputText, setInputText] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
-
-  const sendMessage = async () => {
-    if (loading || !inputText.trim()) return;
-
-    const currentPrompt = inputText;
-    setLoading(true);
-    setInputText("");
-    setChatHistory((prev) => [
-      ...prev,
-      { message: currentPrompt, type: "user" },
-    ]);
-
-    try {
-      const response = await fetch("/api/chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ prompt: currentPrompt }),
-      });
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Server returned an error");
-      }
-
-      setChatHistory((prev) => [
-        ...prev,
-        { message: data.text, type: "model" },
-      ]);
-    } catch (error) {
-      console.error(error);
-      setChatHistory((prev) => [
-        ...prev,
-        {
-          message: "Something went wrong. Failed to get a response",
-          type: "system",
-        },
-      ]);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {
+    inputText,
+    setInputText,
+    loading,
+    chatHistory,
+    sendMessage,
+  } = useChatLogic();
 
   const handleKeyDown = async (
     event: React.KeyboardEvent<HTMLTextAreaElement>,
@@ -65,7 +25,9 @@ export default function Home() {
   return (
     <div className="pt-10 flex flex-col justify-center items-center w-[80dvh]">
       <ChatMessages chatHistory={chatHistory} />
-      <div className="p-4 mb-4 h-2 justify-start w-full">{loading && <LoadingSpinner />}</div>
+      <div className="p-4 mb-4 h-2 justify-start w-full">
+        {loading && <LoadingSpinner />}
+      </div>
 
       <div className="relative w-full">
         <textarea
