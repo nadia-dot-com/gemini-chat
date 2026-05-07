@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import { DEFAULT_MESSAGE } from "@/features/chat/data/messages";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -8,7 +9,7 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Ai Chat",
-  description: "Asc me something...",
+  description: DEFAULT_MESSAGE,
   icons: {
     icon: '/favicon.svg',
   }
