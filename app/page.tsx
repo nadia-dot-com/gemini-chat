@@ -34,11 +34,12 @@ export default function Home() {
         />
 
         <button
-          aria-label="send messageG"
+          aria-label="send message"
+          type="submit"
           onClick={sendMessage}
-          className="bg-accent !p-2 absolute z-10 top-3 right-3 rounded-full cursor-pointer text-secondary"
+          className="bg-accent !p-2 absolute z-10 top-4 right-3 rounded-full cursor-pointer text-secondary"
         >
-          <svg width="35" height="35" viewBox="0 0 24 24">
+          <svg width="30" height="30" viewBox="0 0 24 24">
             <path
               d="M3 11.5L20 4L13 21L11 13L3 11.5Z"
               stroke="currentColor"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChatMessage } from "../types/types";
 import { INFORMATIVE_MESSAGES } from "../data/messages";
+import { v4 as uuidv4 } from "uuid";
 
 export function useChatLogic() {
   const [inputText, setInputText] = useState("");
@@ -15,7 +16,7 @@ export function useChatLogic() {
     setInputText("");
     setChatHistory((prev) => [
       ...prev,
-      { message: currentPrompt, type: "user" },
+      { id: uuidv4(), message: currentPrompt, type: "user" },
     ]);
 
     try {
@@ -34,7 +35,7 @@ export function useChatLogic() {
 
       setChatHistory((prev) => [
         ...prev,
-        { message: data.text, type: "model" },
+        { id: uuidv4(), message: data.text, type: "model" },
       ]);
     } catch (error) {
       console.error(error);
@@ -48,6 +49,7 @@ export function useChatLogic() {
       setChatHistory((prev) => [
         ...prev,
         {
+          id: uuidv4(),
           message,
           type: "system",
         },
