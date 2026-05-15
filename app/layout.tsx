@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import { DEFAULT_MESSAGE } from "@/features/chat/data/messages";
+import { DESCRIPTION } from "@/features/chat/data/messages";
+import { Header } from "@/components/loyouts/Header";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -9,10 +10,10 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: "Ai Chat",
-  description: DEFAULT_MESSAGE,
+  description: DESCRIPTION,
   icons: {
-    icon: '/favicon.svg',
-  }
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -22,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${roboto.className} h-full antialiased`}>
-      <body >{children}</body>
+      <body>
+        <Header/>
+        {children}
+        </body>
     </html>
   );
 }

@@ -5,13 +5,8 @@ import { ChatMessages } from "@/components/chat/ChatMessages";
 import { useChatLogic } from "@/features/chat/hooks/useChatLogic";
 
 export default function Home() {
-  const {
-    inputText,
-    setInputText,
-    loading,
-    chatHistory,
-    sendMessage,
-  } = useChatLogic();
+  const { inputText, setInputText, loading, chatHistory, sendMessage } =
+    useChatLogic();
 
   const handleKeyDown = async (
     event: React.KeyboardEvent<HTMLTextAreaElement>,
@@ -39,6 +34,7 @@ export default function Home() {
         />
 
         <button
+          aria-label="send messageG"
           onClick={sendMessage}
           className="bg-[#0f0f12] p-2 absolute z-10 top-5 right-3 rounded-full cursor-pointer"
         >

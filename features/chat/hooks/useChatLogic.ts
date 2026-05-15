@@ -43,7 +43,7 @@ export function useChatLogic() {
         error instanceof Error &&
         error.message === INFORMATIVE_MESSAGES.expiredLimit
           ? INFORMATIVE_MESSAGES.expiredLimit
-          : INFORMATIVE_MESSAGES.uiError;
+          : INFORMATIVE_MESSAGES.genericError;
 
       setChatHistory((prev) => [
         ...prev,

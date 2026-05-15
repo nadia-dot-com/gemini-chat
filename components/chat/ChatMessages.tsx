@@ -13,7 +13,7 @@ export function ChatMessages({ chatHistory }: { chatHistory: ChatMessage[] }) {
           ))}
         </div>
       ) : (
-        <div className="text-2xl text-center pt-80">{DEFAULT_MESSAGE}</div>
+        <h2 className="text-2xl text-center pt-80">{DEFAULT_MESSAGE}</h2>
       )}
     </div>
   );

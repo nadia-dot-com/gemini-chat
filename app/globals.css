@@ -27,3 +27,9 @@ textarea {
   outline: none;
   font-family: inherit;
 }
+
+button {
+  background-color: var(--color-accent);
+  padding: 10px 15px;
+  cursor: pointer;
+}
